@@ -1,3 +1,12 @@
+/*
+ * javygr@gmail.com
+ * davidfjusto@gmail.com
+*/
+
+/**
+ * \file
+ * \brief Practica4: ping pong
+ */
 
 public class Ping implements Runnable {
 	private int name;
