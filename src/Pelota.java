@@ -12,29 +12,39 @@ public class Pelota{
 	public boolean isEndGame(){
 		return endGame;
 	}
-	public boolean isFree(){
+
+	public synchronized boolean isFree() {
 		return !lock;
 	}
 	public void comprobarCondiciones(){
-		if(numJugadas > 2){
+		/* Aqui se introdicen todas las diferentes formas en las que se desea detener el juego
+		por el momento solo se detiene ante un numero de jugadas, pero podría recorrerse el array jugadas
+		e ir contando cuántas veces aparece un jugador para detener la partida cuando un jugador juegue x
+		veces.
+
+		 */
+		if (numJugadas > 50) {
 			endGame=true;
 		}
 	}
-	
-	public synchronized void run(int i){
-		
-		//comprobarCondiciones();
-		if(!endGame){
-			lock=true;
-			numJugadas++;
-			System.out.println("Llevamos "+numJugadas + "Jugadas ");
-			jugadas[numJugadas]=i; 
-		}
+
+	public void run(int i) {
+
+		comprobarCondiciones();
+		synchronized (this) {
+			if (!endGame) {
+				lock = true;
+				numJugadas++;
+				System.out.println("Llevamos " + numJugadas + "Jugadas ");
+				jugadas[numJugadas] = i;
+			}
+
+
 		lock=false;
 		
 		notify();
 		}
-	
-	
+	}
+
 
 }

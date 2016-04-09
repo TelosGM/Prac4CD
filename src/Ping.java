@@ -14,19 +14,21 @@ public class Ping implements Runnable {
 			try {
 				Thread.sleep(200);
 			} catch (InterruptedException e1) {
-				// TODO Auto-generated catch block
+
 				e1.printStackTrace();
 			}
-			while(!pelota.isFree())
+			if (!pelota.isFree())
 			{
 				 try {
 			            this.wait(); 
 			         } 
 				 catch (InterruptedException e) {}
-			}
-			if(!pelota.isEndGame()){
-			pelota.run(name);
-			System.out.println ("El hilo "+name+" está jugando");
+			} else {
+
+				if (!pelota.isEndGame()) {
+					pelota.run(name);
+					System.out.println("El hilo " + name + " estï¿½ jugando");
+				}
 			}
 		}
 	}
