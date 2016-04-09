@@ -1,3 +1,12 @@
+/*
+ * javygr@gmail.com
+ * davidfjusto@gmail.com
+*/
+
+/**
+ * \file
+ * \brief Practica4: ping pong
+ */
 
 public class Pelota{
 	private int numJugadas;
@@ -5,8 +14,8 @@ public class Pelota{
 	private boolean lock=false;
 	private boolean endGame= false;
 	public Pelota (){
-		numJugadas=0;
-		jugadas = new int [100];
+		numJugadas= 0;
+		jugadas = new int[10000];
 		
 	}
 	public boolean isEndGame(){
